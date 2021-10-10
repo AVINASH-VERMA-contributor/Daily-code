@@ -8,7 +8,7 @@ int data;
 
 struct Node *head=(struct Node*)(malloc(sizeof(struct Node)));
 
-void insert(int element){
+void insertAtFront(int element){
 struct Node *new_node=(struct Node*)(malloc(sizeof(struct Node)));
 new_node->next=head;
 new_node->data=element;
@@ -45,6 +45,16 @@ new_node->data=element;
 
 }
 
+void insertAfterNode(int element,struct Node *prev){
+struct Node *new_node=(struct Node*)(malloc(sizeof(struct Node)));
+new_node->data=element;
+
+new_node->next=prev->next;
+prev->next=new_node;
+
+
+}
+
 
 void display(){ 
     struct Node *ptr;
@@ -73,9 +83,13 @@ int main(){
     
     third->data=47;
     third->next=NULL;
-    
-    insertAtEnd(32);
+ 
+    insertAtFront(32);
+    insertAtEnd(36);
     insertInBetween(35,3);
+
+    insertAfterNode(23,second);
+    
     display();
 
     return 0;
