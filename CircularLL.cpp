@@ -46,6 +46,30 @@ struct Node* insertAtfront(int val,struct Node *head){
     return head;
 }
 
+void deletefromFront(){
+    struct Node *ptr=head;
+    struct Node *p=head;
+
+    while(p->next!=head){
+        p=p->next;
+    }
+    p->next=head->next;
+    head=head->next;
+    free(ptr);
+}
+
+void deletefromEnd(){
+    struct Node * ptr;
+    struct Node * p;
+
+    while(p->next->next!=head){
+        p=p->next;
+    }
+    ptr=p->next;
+    p->next=head;
+    free(ptr);
+}
+
 
 int main(){
     struct Node *first=(struct Node*)(malloc(sizeof(struct Node)));
@@ -73,5 +97,10 @@ int main(){
     head=insertAtfront(17,&*head);
     display(&*head);
 
+    deletefromFront();
+    deletefromFront();
+    deletefromFront();
+    deletefromEnd();
+    display(&*head);
 
 }
